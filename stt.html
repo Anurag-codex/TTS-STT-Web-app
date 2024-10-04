@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to top left, #000000, #00ff00), /* Black to Green */
+                        linear-gradient(to top right, #0000ff, #ff00ff); /* Blue to Pink */
+            background-blend-mode: screen;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        #output {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            min-height: 100px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            word-wrap: break-word;
+            color: black;
+        }
+        button {
+            background: linear-gradient(135deg, #0059ff, #ff00ff);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #ff00ff, #200ac8);
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Speech to Text integrated with read aloud</h1>
+        <div id="output">Click the below button and start speaking.</div>
+        <button id="start-btn">Start Recording</button>
+    </div>
+
+    <script src="js/stt.js"></script>
+</body>
+</html>

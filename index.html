@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <title>Speech App - Convert Text to Speech, Speech to Text, and Translate</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: #0077be;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: "Montserrat", sans-serif;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2.5rem;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 800;
+        }
+        .get-app-btn {
+            background-color: #ffd700;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero-section {
+            background: linear-gradient(65deg, #06294a, #0000ff);
+            color: white;
+            padding: 3rem 5%;
+            height: 60vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero-content {
+            max-width: 50%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: "Josefin Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+        }
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+        }
+        .download-btns {
+            display: flex;
+            gap: 1rem;
+        }
+        .download-btn {
+            background-color: white;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        .stars {
+            color: #ffd700;
+            margin-right: 0.5rem;
+        }
+        .hero-image {
+            max-width: 40%;
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+        }
+        .key-features {
+            background-color: #f5f5dc;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        .key-features h2 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .feature-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #0077be;
+            margin-bottom: 1rem;
+        }
+        .feature-title {
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .feature-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .explore-more {
+            display: inline-block;
+            margin-top: 2rem;
+            background-color: #ffd700;
+            color: #333;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+            }
+            .hero-content, .hero-image {
+                max-width: 100%;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+.amazing-buttons {
+  background: linear-gradient(135deg, #06294a, #0077be);
+  padding: 4rem 5%;
+  text-align: center;
+  color: white;
+
+}
+
+.amazing-buttons h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.amazing-buttons p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.amazing-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.amazing-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.primary-button {
+  background-color: #ffaa00;
+  color: #333;
+}
+
+.primary-button:hover {
+  background-color: #ffec8b;
+}
+
+.secondary-button {
+  background-color: #ffffff;
+  color: #0077be;
+}
+
+.secondary-button:hover {
+  background-color: #f0f0f0;
+}
+
+.tertiary-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.tertiary-button:hover {
+  background-color: #45a049;
+}
+
+.button-icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .amazing-button {
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Speech App</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+        </div>
+    </nav>
+    
+    <section class="hero-section" id="home">
+        <div  data-aos="zoom-in-down" class="hero-content">
+            <h1>Convert Speech to Text and Text to Speech</h1>
+            <p class="hero-description">Our app empowers you to communicate effortlessly using text or voice. It's fast, private, and accurate.</p>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="Croods - Projector.png" alt="Speechh App Illustration"  height="30px">
+        </div>
+    </section>
+
+
+      <section  class="amazing-buttons">
+        <h2>Try Our Speech Tools</h2>
+        <p>Convert text to speech or speech to text with just one click!</p>
+        <div data-aos="fade-right" class="button-container">
+          <a href="tts.html" class="amazing-button primary-button">
+            <span class="button-icon">🔊</span>
+            <span class="button-text">Text to Speech</span>
+          </a>
+          <a href="stt.html" class="amazing-button secondary-button">
+            <span class="button-icon">📝</span>
+            <span class="button-text">Speech to Text</span>
+          </a>
+          <a href="chatbot.html" class="amazing-button tertiary-button" id="chatbot-button">
+            <span class="button-icon">💬</span>
+            <span class="button-text">Chat with AI</span>
+          </a>
+        </div>
+      </section>
+
+
+
+
+
+    <section class="key-features" id="features">
+        <h2>Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🎙️</div>
+                <div class="feature-title">Advanced Speech Recognition</div>
+                <div class="feature-description">Our cutting-edge AI accurately transcribes speech to text in real-time, supporting multiple languages and accents.</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🗣️</div>
+                <div class="feature-title">Natural Text-to-Speech</div>
+                <div class="feature-description">Convert text to lifelike speech with customizable voices, perfect for accessibility or multitasking.</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💾</div>
+                <div class="feature-title">voice integrate</div>
+                <div class="feature-description">communicate using your voice or by  typing, with seamless integration across all your devices.</div>
+
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-title">Privacy Focused</div>
+                <div class="feature-description">We prioritize your data security. All conversions are processed locally on your device when possible.</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔌</div>
+                <div class="feature-title">Seamless Integration</div>
+                <div class="feature-description">Easily integrate with other apps for enhanced productivity. Works with popular note-taking and messaging apps.</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🌐</div>
+                <div class="feature-title">Translation Support</div>
+                <div class="feature-description">Seamlessly translate between languages, supporting both text and voice input for effortless multilingual communication.</div>
+            </div>
+        </div>
+        <a href="#" class="explore-more">Explore more features »</a>
+    </section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+</body>
+</html>

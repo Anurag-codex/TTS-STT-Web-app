@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text to Speech Converter with Translation</title>
+    <link rel="stylesheet" href="css/tts.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>Text to Speech Converter with Translation</header>
+      <textarea id="inputText" placeholder="Enter text in English"></textarea>
+      <div class="controls">
+        <select id="languageSelect">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="bn">Bengali</option>
+          <option value="te">Telugu</option>
+          <option value="mr">Marathi</option>
+          <option value="ta">Tamil</option>
+          <option value="ur">Urdu</option>
+          <option value="gu">Gujarati</option>
+          <option value="kn">Kannada</option>
+          <option value="ml">Malayalam</option>
+          <option value="pa">Punjabi</option>
+        </select>
+        <button id="translateBtn">Translate</button>
+        <button id="speakBtn">Convert to Speech</button>
+      </div>
+      <div id="outputText"></div>
+    </div>
+
+    <script src="js/tts.js" defer></script>
+  </body>
+</html>
